@@ -1,8 +1,8 @@
-import { StyleSheet, Platform } from 'react-native'
+import { StyleSheet} from 'react-native'
 import colors from '../../config/colors';
 
 const styles = StyleSheet.create({
-    container_apptxti:{
+    container:{
         backgroundColor: colors.light,
         borderRadius: 25,
         flexDirection:"row",
@@ -11,8 +11,13 @@ const styles = StyleSheet.create({
         marginVertical: 10,
     },
 
-    icon_apptxti:{
+    icon:{
         marginRight: 10,
+    },
+
+    text:{
+        flex: 1,
+        
     },
 });
 
