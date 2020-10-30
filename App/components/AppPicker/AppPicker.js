@@ -8,7 +8,7 @@ import AppText from '../AppText';
 import Screen from '../Screen';
 import AppPickerItem from './AppPickerItem';
 
-function AppPicker({icon, items, placeholder}) {
+function AppPicker({icon, items, onSelectItem, placeholder, selectedItem}) {
     const [modalVisible,setModalVisible] = useState(false);
     
     return (
@@ -24,7 +24,7 @@ function AppPicker({icon, items, placeholder}) {
                         style={styles.icon}/>
                 }
 
-                <AppText style={styles.text}>{placeholder}</AppText>
+                <AppText style={styles.text}>{selectedItem ? selectedItem.label : placeholder}</AppText>
                 
                 <MaterialCommunityIcons 
                     name="chevron-down"
@@ -43,7 +43,10 @@ function AppPicker({icon, items, placeholder}) {
                         renderItem={({item}) => 
                             <AppPickerItem
                                 label={item.label}
-                                onPress={()=> console.log(item)}/>
+                                onPress={()=>{
+                                  setModalVisible(false);
+                                  onSelectItem(item);  
+                                }}/>
                         }/>
                 </Screen>
             </Modal>
