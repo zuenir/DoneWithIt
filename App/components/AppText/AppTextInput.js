@@ -5,9 +5,9 @@ import styles from './styles';
 import colors from '../../config/colors';
 import defaultStyles from '../../config/styles';
 
-function AppTextInput({icon, ...otherProps}) {
+function AppTextInput({icon, width='100%', ...otherProps}) {
     return (
-        <View style={styles.container_apptxti}>
+        <View style={[styles.container_apptxti, {width}]}>
            {
                 icon && 
                 <MaterialCommunityIcons 

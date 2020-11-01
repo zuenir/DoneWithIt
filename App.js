@@ -16,10 +16,11 @@ import ListingsScreen from './App/screens/ListingsScreen';
 import AppTextInput from './App/components/AppText/AppTextInput';
 import AppPicker from './App/components/AppPicker/AppPicker';
 import LoginScreen from './App/screens/LoginScreen';
+import RegisterScreen from './App/screens/RegisterScreen';
 
 
 export default function App() {
   return (
-    <LoginScreen/>
+    <RegisterScreen/>
   );
 }
