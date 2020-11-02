@@ -8,33 +8,32 @@ import AppText from '../AppText';
 import Screen from '../Screen';
 import AppPickerItem from './AppPickerItem';
 
-function AppPicker({icon, items, onSelectItem, placeholder, selectedItem}) {
+function AppPicker({icon, items, onSelectItem, placeholder, selectedItem }) {
+    
     const [modalVisible,setModalVisible] = useState(false);
     
     return (
         <>
             <TouchableWithoutFeedback onPress={()=>setModalVisible(true)}>
                 <View style={styles.container}>
-                {
-                    icon && 
+                    {icon && 
+                        (<MaterialCommunityIcons 
+                            name={icon}
+                            size={20}
+                            color={colors.medium}
+                            style={styles.icon}/>
+                    )}
+
+                    {selectedItem ? (
+                        <AppText style={styles.text}>{selectedItem.label}</AppText>
+                    )   :   (
+                        <AppText style={styles.placeholder}>{placeholder}</AppText>
+                    )}
+                    
                     <MaterialCommunityIcons 
-                        name={icon}
+                        name="chevron-down"
                         size={20}
-                        color={colors.medium}
-                        style={styles.icon}/>
-                }
-
-                {selectedItem ? 
-                    (<AppText style={styles.text}>{selectedItem.label}</AppText>)
-                    :
-                    (<AppText style={styles.placeholder}>{placeholder}</AppText>)
-                }
-                
-                <MaterialCommunityIcons 
-                    name="chevron-down"
-                    size={20}
-                    color={colors.medium}/>
-
+                        color={colors.medium}/>
                 </View>
             </TouchableWithoutFeedback>
             
@@ -50,7 +49,8 @@ function AppPicker({icon, items, onSelectItem, placeholder, selectedItem}) {
                                 onPress={()=>{
                                   setModalVisible(false);
                                   onSelectItem(item);  
-                                }}/>
+                                }
+                            }/>
                         }/>
                 </Screen>
             </Modal>

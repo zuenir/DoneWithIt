@@ -17,10 +17,11 @@ import AppTextInput from './App/components/AppText/AppTextInput';
 import AppPicker from './App/components/AppPicker/AppPicker';
 import LoginScreen from './App/screens/LoginScreen';
 import RegisterScreen from './App/screens/RegisterScreen';
+import ListingEditScreen from './App/screens/ListingEditScreen';
 
 
 export default function App() {
   return (
-    <RegisterScreen/>
+    <ListingEditScreen/>
   );
 }

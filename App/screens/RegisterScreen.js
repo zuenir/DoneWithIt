@@ -1,8 +1,8 @@
 import React from 'react';
 import * as Yup from 'yup';
-import {AppForm, AppFormFields, AppSubmitButton} from '../components/forms';
 import Screen from '../components/Screen';
 import { StyleSheet } from 'react-native';
+import { AppForm , AppFormFields, AppSubmitButton} from '../components/Forms';
 
 const validationSchema = Yup.object().shape({
     name:Yup.string().required().label("Name"),
