@@ -8,14 +8,23 @@ import AppText from '../AppText';
 import Screen from '../Screen';
 import AppPickerItem from './AppPickerItem';
 
-function AppPicker({icon, items, onSelectItem, placeholder, selectedItem }) {
+function AppPicker({
+    icon, 
+    items,
+    numberOfColumns = 1, 
+    onSelectItem,
+    AppPickerItemComponent = AppPickerItem, 
+    placeholder, 
+    selectedItem, 
+    width="100%" 
+}) {
     
     const [modalVisible,setModalVisible] = useState(false);
     
     return (
         <>
             <TouchableWithoutFeedback onPress={()=>setModalVisible(true)}>
-                <View style={styles.container}>
+                <View style={[styles.container,{width}]}>
                     {icon && 
                         (<MaterialCommunityIcons 
                             name={icon}
@@ -43,10 +52,12 @@ function AppPicker({icon, items, onSelectItem, placeholder, selectedItem }) {
                     <FlatList
                         data={items}
                         keyExtractor={item => item.value.toString()}
+                        numColumns = {numberOfColumns}
                         renderItem={({item}) => 
-                            <AppPickerItem
-                                label={item.label}
-                                onPress={()=>{
+                            <AppPickerItemComponent
+                                item = {item}
+                                label = {item.label}
+                                onPress = {()=>{
                                   setModalVisible(false);
                                   onSelectItem(item);  
                                 }
