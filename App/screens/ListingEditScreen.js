@@ -1,16 +1,17 @@
 import React from 'react';
 import * as Yup from 'yup';
-import { AppForm, AppFormFields, AppFormPicker, AppSubmitButton } from '../components/Forms';
+import { AppForm, AppFormFields, AppFormImagePicker, AppFormPicker, AppSubmitButton } from '../components/Forms';
 import Screen from '../components/Screen';
 import { StyleSheet } from 'react-native';
-import AppPicker from '../components/AppPicker/AppPicker';
 import AppCategoryPickerItem from '../components/AppPicker/AppCategoryPickerItem';
+import useLocation from '../hooks/useLocation';
 
 const validationSchema = Yup.object().shape({
     title:Yup.string().required().min(1).label("Title"),
-    price:Yup.number().required().label("Price"),
+    price:Yup.number().required().min(1).label("Price"),
     category:Yup.object().required().nullable().label("Category"),
     description:Yup.string().label("Description"),
+    images:Yup.array().min(1,"Please select at least on image.")
 });
 
 const categories = [
@@ -71,45 +72,51 @@ const categories = [
 ];
 
 function ListingEditScreen(props) {
-    return (
-        <Screen style={styles.container}>
-            <AppForm 
-                initialValues={{title:'',price:'',category:null,description:''}}
-                onSubmit={values => console.log(values)}
-                validationSchema={validationSchema}>
-                    <AppFormFields 
-                        maxLength={255}
-                        autoCapitalize="none"
-                        autoCorrect={false}
-                        name="title"
-                        placeholder="Title"/>
 
-                    <AppFormFields 
-                        autoCapitalize="none"
-                        autoCorrect={false}
-                        keyboardType="numeric"
-                        name="price"
-                        placeholder="0,00 AKZ"/>
+  const location = useLocation();
 
-                    <AppFormPicker
-                        items={categories}
-                        name="category"
-                        numberOfColumns={3}
-                        AppPickerItemComponent = {AppCategoryPickerItem}
-                        placeholder="Category"/>
+  return (
+      <Screen style={styles.container}>
+          <AppForm 
+              initialValues={{title:'',price:'',category:null,description:'', images:[]}}
+              onSubmit={values => console.log(location)}
+              validationSchema={validationSchema}>
+                  
+                  <AppFormImagePicker name="images"/>
+                  
+                  <AppFormFields 
+                      maxLength={255}
+                      autoCapitalize="none"
+                      autoCorrect={false}
+                      name="title"
+                      placeholder="Title"/>
 
-                    <AppFormFields 
-                        maxLength={255}
-                        multiline
-                        name="description"
-                        numberOfLines={3}
-                        placeholder="Description"/>
+                  <AppFormFields 
+                      autoCapitalize="none"
+                      autoCorrect={false}
+                      keyboardType="numeric"
+                      name="price"
+                      placeholder="0,00 AKZ"/>
 
-                    <AppSubmitButton 
-                        title="Post"/>
-            </AppForm>
-        </Screen>
-    );
+                  <AppFormPicker
+                      items={categories}
+                      name="category"
+                      numberOfColumns={3}
+                      AppPickerItemComponent = {AppCategoryPickerItem}
+                      placeholder="Category"/>
+
+                  <AppFormFields 
+                      maxLength={255}
+                      multiline
+                      name="description"
+                      numberOfLines={3}
+                      placeholder="Description"/>
+
+                  <AppSubmitButton 
+                      title="Post"/>
+          </AppForm>
+      </Screen>
+  );
 }
 
 const styles = StyleSheet.create({
