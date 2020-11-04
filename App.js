@@ -1,13 +1,15 @@
-import { StatusBar } from 'expo-status-bar';
-import React , {useState, useEffect} from 'react';
-import Screen from './App/components/Screen';
-import ListingEditScreen from './App/screens/ListingEditScreen';
+import React from 'react';
+import { NavigationContainer } from "@react-navigation/native";
+
+import AuthNavigator from './App/navigation/AuthNavigator';
+import navigationTheme from './App/navigation/navigationTheme';
+import AppNavigator from './App/navigation/AppNavigator';
 
 export default function App() {
 
   return (
-    <Screen>
-      <ListingEditScreen/>
-    </Screen>
+    <NavigationContainer theme={navigationTheme}>
+      <AppNavigator />
+    </NavigationContainer>
   );
 }
