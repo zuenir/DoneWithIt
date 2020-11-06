@@ -1,0 +1,1 @@
+{"ast":null,"code":"import AppText from \"./AppText\";\nexport default AppText;","map":{"version":3,"sources":["C:/Users/ZeldaArleth/Documents/GitHub/DoneWithIt/App/components/AppText/index.js"],"names":["AppText"],"mappings":"AAAA,OAAOA,OAAP;AAEA,eAAeA,OAAf","sourcesContent":["import AppText from './AppText';\r\n\r\nexport default AppText;"]},"metadata":{},"sourceType":"module"}

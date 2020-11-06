@@ -1,36 +1,37 @@
 {
-  "main": "node_modules/expo/AppEntry.js",
+  "name": "donewithit",
+  "version": "1.0.0",
+  "description": "Vender Produtos Usados",
+  "main": "server",
   "scripts": {
-    "start": "expo start",
-    "android": "expo start --android",
-    "ios": "expo start --ios",
-    "web": "expo start --web",
-    "eject": "expo eject"
+    "start": "node server",
+    "server": "nodemon server",
+    "client": "npm start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zuenir/DoneWithIt.git"
+  },
+  "author": "Zuenir Claudio",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/zuenir/DoneWithIt/issues"
+  },
+  "homepage": "https://github.com/zuenir/DoneWithIt#readme",
   "dependencies": {
-    "@react-native-community/masked-view": "0.1.10",
-    "@react-navigation/bottom-tabs": "^5.10.4",
-    "@react-navigation/native": "^5.8.4",
-    "@react-navigation/stack": "^5.12.1",
-    "expo": "^39.0.3",
-    "expo-constants": "^9.2.0",
-    "expo-image-picker": "~9.1.0",
-    "expo-location": "~9.0.0",
-    "expo-permissions": "~9.3.0",
-    "expo-status-bar": "~1.0.2",
-    "formik": "^2.2.1",
-    "react": "16.13.1",
-    "react-dom": "16.13.1",
-    "react-native": "https://github.com/expo/react-native/archive/sdk-39.0.4.tar.gz",
-    "react-native-gesture-handler": "~1.7.0",
-    "react-native-reanimated": "~1.13.0",
-    "react-native-safe-area-context": "3.1.4",
-    "react-native-screens": "~2.10.1",
-    "react-native-web": "~0.13.12",
-    "yup": "^0.29.3"
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.0",
+    "config": "^3.3.2",
+    "express": "^4.17.1",
+    "express-validator": "^6.6.1",
+    "gravatar": "^1.8.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.10.13",
+    "request": "^2.88.2"
   },
   "devDependencies": {
-    "@babel/core": "~7.9.0"
-  },
-  "private": true
+    "concurrently": "^5.3.0",
+    "nodemon": "^2.0.6"
+  }
 }
