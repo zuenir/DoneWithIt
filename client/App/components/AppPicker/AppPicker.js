@@ -7,7 +7,6 @@ import AppText from '../AppText';
 import Screen from '../Screen';
 import AppPickerItem from './AppPickerItem';
 
-
 function AppPicker({
     icon,
     items,
