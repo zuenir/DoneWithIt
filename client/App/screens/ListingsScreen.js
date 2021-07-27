@@ -17,6 +17,12 @@ const listings = [
         title : "Couch in great condition",
         price: 1500,
         image: require('../assets/couch.jpg')
+    },
+    {
+        id: 3,
+        title : "Chair in great condition",
+        price: 2400,
+        image: require('../assets/chair.jpg')
     }
 ];
 
@@ -24,6 +30,7 @@ function ListingsScreen({navigation}) {
     return (
         <Screen style={styles.screen}>
             <FlatList
+                showsVerticalScrollIndicator = {false}
                 data = {listings}
                 keyExtractor = {listing => listing.id.toString()}
                 renderItem = {({item}) => 

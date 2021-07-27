@@ -9,5 +9,6 @@ export default Object.freeze({
     LISTING_EDIT: 'ListingEdit',
     LISTING_DETAILS: 'ListingDetails',
     REGISTER: 'Register',
+    MYLISTINGS: 'MyListings',
     WELCOME:'Welcome',
 });
